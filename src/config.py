@@ -1,0 +1,3 @@
+class Config:
+    TEMPERATURE_MAXIMUM = 2.0
+    GPU_CPU_UPDATE_INTERVAL = 500
