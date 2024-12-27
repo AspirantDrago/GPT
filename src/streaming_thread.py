@@ -1,7 +1,7 @@
 import torch
 from PyQt6.QtCore import pyqtSignal
 from PyQt6.QtCore import QThread
-from transformers import AutoModelForCausalLM, AutoTokenizer, TextStreamer
+from transformers import AutoModelForCausalLM, AutoTokenizer
 
 from src.streamer import PyQtStreamer
 
@@ -34,6 +34,7 @@ class StreamingThread(QThread):
                     do_sample=bool(self.temperature),
                     temperature=self.temperature,
                     pad_token_id=self.tokenizer.eos_token_id,
+                    eos_token_id=self.tokenizer.eos_token_id,
                     streamer=streamer,
                 )
             self.generation_finished.emit()  # Сигнал завершения генерации

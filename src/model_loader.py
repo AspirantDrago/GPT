@@ -1,6 +1,6 @@
 from PyQt6.QtCore import QThread, pyqtSignal
 
-from main import get_model_and_tokenizer
+from utils import get_model_and_tokenizer
 
 
 class ModelLoaderThread(QThread):

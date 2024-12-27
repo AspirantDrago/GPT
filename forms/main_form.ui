@@ -13,64 +13,30 @@
   <property name="windowTitle">
    <string>GPT</string>
   </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>../images/icon.svg</normaloff>../images/icon.svg</iconset>
+  </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QVBoxLayout" name="verticalLayout_2">
-    <item>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
      <widget class="QSplitter" name="splitter">
-      <property name="autoFillBackground">
-       <bool>false</bool>
-      </property>
       <property name="orientation">
        <enum>Qt::Vertical</enum>
       </property>
-      <property name="childrenCollapsible">
-       <bool>true</bool>
-      </property>
-      <widget class="QWidget" name="widget_5" native="true">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <layout class="QGridLayout" name="gridLayout_3">
-        <item row="3" column="0" colspan="2">
-         <widget class="QPushButton" name="btnSend">
-          <property name="font">
-           <font>
-            <pointsize>10</pointsize>
-           </font>
-          </property>
-          <property name="text">
-           <string>ОТПРАВИТЬ</string>
-          </property>
-         </widget>
-        </item>
+      <widget class="QWidget" name="widget_4" native="true">
+       <layout class="QGridLayout" name="gridLayout_2">
         <item row="1" column="0">
-         <widget class="QTextEdit" name="inputPrompt">
-          <property name="enabled">
-           <bool>true</bool>
-          </property>
-          <property name="font">
-           <font>
-            <family>Ubuntu</family>
-            <pointsize>14</pointsize>
-           </font>
-          </property>
-          <property name="html">
-           <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Ubuntu'; font-size:14pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'MS Shell Dlg 2'; font-size:7.8pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-          </property>
-          <property name="placeholderText">
-           <string>Введите ваш запрос...</string>
+         <widget class="QWebEngineView" name="resultView">
+          <property name="url">
+           <url>
+            <string>about:blank</string>
+           </url>
           </property>
          </widget>
         </item>
-        <item row="0" column="0" colspan="2">
-         <widget class="QWidget" name="widget" native="true">
+        <item row="0" column="0">
+         <widget class="QWidget" name="reload_panel" native="true">
           <property name="minimumSize">
            <size>
             <width>0</width>
@@ -97,24 +63,18 @@ p, li { white-space: pre-wrap; }
             <number>0</number>
            </property>
            <item>
-            <widget class="QProgressBar" name="loadingProgressBar">
-             <property name="minimumSize">
+            <widget class="LoaderWidget" name="loadingProgressBar" native="true">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="maximumSize">
               <size>
-               <width>0</width>
+               <width>16777215</width>
                <height>20</height>
               </size>
-             </property>
-             <property name="maximum">
-              <number>1000</number>
-             </property>
-             <property name="value">
-              <number>0</number>
-             </property>
-             <property name="textVisible">
-              <bool>false</bool>
-             </property>
-             <property name="invertedAppearance">
-              <bool>false</bool>
              </property>
             </widget>
            </item>
@@ -128,8 +88,48 @@ p, li { white-space: pre-wrap; }
           </layout>
          </widget>
         </item>
+        <item row="2" column="0">
+         <widget class="Line" name="line_2">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="widget_5" native="true">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <layout class="QGridLayout" name="gridLayout_3">
+        <item row="1" column="0">
+         <widget class="QTextEdit" name="inputPrompt">
+          <property name="enabled">
+           <bool>true</bool>
+          </property>
+          <property name="font">
+           <font>
+            <family>Ubuntu</family>
+            <pointsize>14</pointsize>
+           </font>
+          </property>
+          <property name="html">
+           <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Ubuntu','MS Shell Dlg 2'; font-size:14pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'MS Shell Dlg 2'; font-size:7.8pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="placeholderText">
+           <string>Введите ваш запрос...</string>
+          </property>
+         </widget>
+        </item>
         <item row="1" column="1">
-         <widget class="QWidget" name="widget_3" native="true">
+         <widget class="QWidget" name="right_menu" native="true">
           <layout class="QVBoxLayout" name="verticalLayout">
            <property name="spacing">
             <number>1</number>
@@ -172,23 +172,6 @@ p, li { white-space: pre-wrap; }
              </property>
             </widget>
            </item>
-           <item>
-            <widget class="QPushButton" name="btnCopyPrompt">
-             <property name="text">
-              <string/>
-             </property>
-             <property name="icon">
-              <iconset>
-               <normaloff>../images/copy.png</normaloff>../images/copy.png</iconset>
-             </property>
-             <property name="iconSize">
-              <size>
-               <width>30</width>
-               <height>30</height>
-              </size>
-             </property>
-            </widget>
-           </item>
            <item alignment="Qt::AlignHCenter">
             <widget class="QSlider" name="sliderTemperatureModel">
              <property name="maximum">
@@ -213,30 +196,7 @@ p, li { white-space: pre-wrap; }
          </widget>
         </item>
         <item row="4" column="0" colspan="2">
-         <widget class="Line" name="line_2">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-      <widget class="QWidget" name="widget_4" native="true">
-       <layout class="QGridLayout" name="gridLayout_2">
-        <item row="0" column="0">
-         <widget class="QTextBrowser" name="textResult">
-          <property name="font">
-           <font>
-            <pointsize>14</pointsize>
-           </font>
-          </property>
-          <property name="placeholderText">
-           <string>Я готова ответить на все твои вопросы...</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="0">
-         <widget class="QWidget" name="widget_2" native="true">
+         <widget class="QWidget" name="GPU_RAM_status_panel" native="true">
           <property name="minimumSize">
            <size>
             <width>0</width>
@@ -260,7 +220,7 @@ p, li { white-space: pre-wrap; }
             <number>0</number>
            </property>
            <item>
-            <widget class="QLabel" name="label">
+            <widget class="QLabel" name="label_GPU">
              <property name="text">
               <string>GPU</string>
              </property>
@@ -304,7 +264,7 @@ p, li { white-space: pre-wrap; }
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="label_2">
+            <widget class="QLabel" name="label_RAM">
              <property name="text">
               <string>RAM</string>
              </property>
@@ -336,6 +296,26 @@ p, li { white-space: pre-wrap; }
           </layout>
          </widget>
         </item>
+        <item row="3" column="0" colspan="2">
+         <widget class="QPushButton" name="btnSend">
+          <property name="font">
+           <font>
+            <family>MS Shell Dlg 2</family>
+            <pointsize>10</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string>ОТПРАВИТЬ</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="0" colspan="2">
+         <widget class="Line" name="line_3">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+         </widget>
+        </item>
        </layout>
       </widget>
      </widget>
@@ -348,11 +328,24 @@ p, li { white-space: pre-wrap; }
      <x>0</x>
      <y>0</y>
      <width>923</width>
-     <height>26</height>
+     <height>29</height>
     </rect>
    </property>
   </widget>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QWebEngineView</class>
+   <extends>QWidget</extends>
+   <header location="global">QtWebEngineWidgets/QWebEngineView</header>
+  </customwidget>
+  <customwidget>
+   <class>LoaderWidget</class>
+   <extends>QWidget</extends>
+   <header>widgets.loader</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>
